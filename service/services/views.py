@@ -15,10 +15,6 @@ class SubscriptionView(ReadOnlyModelViewSet):
     ).\
         prefetch_related(
         'plan'
-    ).annotate(
-        price=F('service__full_price') -
-              F('service__full_price') *
-              (F('plan__discount_percent') / 100.00)
     )
     serializer_class = SubscriptionSerializer
 
